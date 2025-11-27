@@ -10,18 +10,13 @@ def calculator():
         num1 = int(entry_num1.get())
         num2 = int(entry_num2.get())
         znak = combo_znak.get()
-        if znak == '+':
-            result = num1 + num2
-        elif znak == '-':
-            result = num1 - num2
-        elif znak == '*':
-            result = num1 * num2
-        elif znak == '/':
-            result = num1 / num2
+        if znak == '+':  result = num1 + num2
+        elif znak == '-':  result = num1 - num2
+        elif znak == '*':  result = num1 * num2
+        elif znak == '/':   result = num1 / num2
         label.config(text=f"Ответ: {result}")
     except ValueError:
         label.config(text="Ошибка")
-
 tab1 = ttk.Frame(tab_control)
 tab_control.add(tab1, text="Калькулятор")
 entry_num1 = tk.Entry(tab1)
@@ -75,3 +70,4 @@ button_text.pack(pady=5)
 text = tk.Text(tab3, wrap='word')
 text.pack(expand=1, fill='both', padx=1, pady=5)
 window.mainloop()
+
