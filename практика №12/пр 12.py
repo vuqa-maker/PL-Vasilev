@@ -5,17 +5,16 @@ import json
 window = tk.Tk()
 window.title("Информация о пользователе")
 def user():
-    name = entry.get().strip()
+    name = entry.get()
     if not name:
         messagebox.showerror("Ошибка")
         return
     url = f"https://api.github.com/users/{name}"
     try:
         response = requests.get(url)
-        response.raise_for_status()
         data = response.json()
-        fields = ['company', 'created_at', 'email', 'id', 'name', 'url']
-        data = {field: data.get(field) for field in fields}
+        p = ['company', 'created_at', 'email', 'id', 'name', 'url']
+        data = {field: data.get(field) for field in p}
         file= f"{name.replace('/', ' ')}.json"
         with open(name, 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=0, indent=4)
@@ -28,4 +27,3 @@ entry.pack(padx=10, pady=5)
 button = tk.Button(window, text="Поиск", command=user)
 button.pack(padx=10, pady=10)
 window.mainloop()
-
