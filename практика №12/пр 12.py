@@ -1,7 +1,7 @@
-import tkinter as tk
 from tkinter import messagebox
 import requests
 import json
+import tkinter as tk
 window = tk.Tk()
 window.title("Информация о пользователе")
 def user():
@@ -27,4 +27,3 @@ entry.pack(padx=5, pady=5)
 button = tk.Button(window, text="Поиск", command=user)
 button.pack(padx=5, pady=5)
 window.mainloop()
-
