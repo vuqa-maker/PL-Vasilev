@@ -1,0 +1,31 @@
+import tkinter as tk
+from tkinter import messagebox
+import requests
+import json
+window = tk.Tk()
+window.title("Информация о пользователе")
+def user():
+    name = entry.get().strip()
+    if not name:
+        messagebox.showerror("Ошибка")
+        return
+    url = f"https://api.github.com/users/{name}"
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        fields = ['company', 'created_at', 'email', 'id', 'name', 'url']
+        data = {field: data.get(field) for field in fields}
+        file= f"{name.replace('/', ' ')}.json"
+        with open(name, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=0, indent=4)
+        messagebox.showinfo("Выполнено", f"Данные сохранены в {file}")
+    except requests.RequestException as e:
+        messagebox.showerror("Ошибка", f"Пользователя не существует")
+tk.Label(window, text="Введите пользователя:").pack(padx=10, pady=5)
+entry = tk.Entry(window, width=50)
+entry.pack(padx=10, pady=5)
+button = tk.Button(window, text="Поиск", command=user)
+button.pack(padx=10, pady=10)
+window.mainloop()
+
