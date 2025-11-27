@@ -71,3 +71,4 @@ text = tk.Text(tab3, wrap='word')
 text.pack(expand=1, fill='both', padx=1, pady=5)
 window.mainloop()
 
+
