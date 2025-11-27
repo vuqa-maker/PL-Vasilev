@@ -22,8 +22,9 @@ def user():
     except requests.RequestException as e:
         messagebox.showerror("Ошибка", f"Пользователя не существует")
 tk.Label(window, text="Введите пользователя:").pack(padx=10, pady=5)
-entry = tk.Entry(window, width=50)
-entry.pack(padx=10, pady=5)
+entry = tk.Entry(window, width=20)
+entry.pack(padx=5, pady=5)
 button = tk.Button(window, text="Поиск", command=user)
-button.pack(padx=10, pady=10)
+button.pack(padx=5, pady=5)
 window.mainloop()
+
